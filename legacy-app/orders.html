@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminPanel v1.2 - Orders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<table width="100%" bgcolor="#003366" cellpadding="8" cellspacing="0" border="0">
+  <tr>
+    <td><font color="white" size="4"><b>AdminPanel v1.2</b></font></td>
+    <td align="right">
+      <font color="#cccccc" size="2">
+        <a href="index.html" style="color:#cccccc; text-decoration:none;">Dashboard</a> &nbsp;|&nbsp;
+        <a href="customers.html" style="color:#cccccc; text-decoration:none;">Customers</a> &nbsp;|&nbsp;
+        <a href="orders.html" style="color:#ffcc00; text-decoration:none;">Orders</a> &nbsp;|&nbsp;
+        <a href="reports.html" style="color:#cccccc; text-decoration:none;">Reports</a> &nbsp;|&nbsp;
+        <a href="settings.html" style="color:#cccccc; text-decoration:none;">Settings</a> &nbsp;|&nbsp;
+        <a href="#" style="color:#ff6666; text-decoration:none;" onclick="alert('Logged out')">Logout</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<table width="100%" bgcolor="#eeeeee" cellpadding="6" cellspacing="0" border="0">
+  <tr><td><font size="3"><b>Order Management</b></font></td></tr>
+</table>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+  <td width="180" valign="top" bgcolor="#f4f4f4" style="border-right:1px solid #cccccc; padding:10px;">
+    <font size="2"><b>Quick Links</b></font><br><br>
+    <a href="index.html" class="sidebar-link">&#9658; Dashboard</a><br>
+    <a href="customers.html" class="sidebar-link">&#9658; Customers</a><br>
+    <a href="orders.html" class="sidebar-link">&#9658; Orders</a><br>
+    <a href="reports.html" class="sidebar-link">&#9658; Reports</a><br>
+    <a href="settings.html" class="sidebar-link">&#9658; Settings</a><br>
+    <br>
+    <font size="2"><b>Filter by Status</b></font><br><br>
+    <a href="#" class="sidebar-link">&#9658; All Orders</a><br>
+    <a href="#" class="sidebar-link">&#9658; Pending</a><br>
+    <a href="#" class="sidebar-link">&#9658; Completed</a><br>
+    <a href="#" class="sidebar-link">&#9658; Cancelled</a><br>
+    <a href="#" class="sidebar-link">&#9658; Shipping</a><br>
+  </td>
+
+  <td valign="top" style="padding:10px;">
+
+    <table cellpadding="3" cellspacing="0" border="0" style="margin-bottom:10px;">
+      <tr>
+        <td><font size="2">Filter by date: </font></td>
+        <td>
+          <select style="border:1px solid #999;">
+            <option>Last 7 days</option>
+            <option>Last 30 days</option>
+            <option>This month</option>
+            <option>Custom range</option>
+          </select>
+        </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><font size="2">Status: </font></td>
+        <td>
+          <select style="border:1px solid #999;">
+            <option>All</option>
+            <option>Pending</option>
+            <option>Completed</option>
+            <option>Cancelled</option>
+            <option>Shipping</option>
+          </select>
+        </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><input type="submit" value="Apply Filter" class="btn-submit"></td>
+      </tr>
+    </table>
+
+    <table class="data-table" width="720" cellpadding="4" cellspacing="0" border="1" bordercolor="#cccccc">
+      <tr bgcolor="#336699">
+        <th><font color="white" size="2">Order ID</font></th>
+        <th><font color="white" size="2">Customer</font></th>
+        <th><font color="white" size="2">Product</font></th>
+        <th><font color="white" size="2">Qty</font></th>
+        <th><font color="white" size="2">Amount</font></th>
+        <th><font color="white" size="2">Status</font></th>
+        <th><font color="white" size="2">Date</font></th>
+        <th><font color="white" size="2">Action</font></th>
+      </tr>
+      <tr bgcolor="#ffffff"><td><font size="2">#10042</font></td><td><font size="2">James Harlow</font></td><td><font size="2">Widget Pro</font></td><td><font size="2">1</font></td><td><font size="2">$349.00</font></td><td><font size="2" color="green"><b>Completed</b></font></td><td><font size="2">2024-01-14</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">#10041</font></td><td><font size="2">Sandra Ohm</font></td><td><font size="2">Connector Kit</font></td><td><font size="2">2</font></td><td><font size="2">$258.00</font></td><td><font size="2" color="orange"><b>Pending</b></font></td><td><font size="2">2024-01-14</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">#10040</font></td><td><font size="2">Mike Torres</font></td><td><font size="2">Premium Support</font></td><td><font size="2">1</font></td><td><font size="2">$599.00</font></td><td><font size="2" color="green"><b>Completed</b></font></td><td><font size="2">2024-01-13</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">#10039</font></td><td><font size="2">Lisa Fontaine</font></td><td><font size="2">Widget Basic</font></td><td><font size="2">1</font></td><td><font size="2">$89.00</font></td><td><font size="2" color="red"><b>Cancelled</b></font></td><td><font size="2">2024-01-13</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">#10038</font></td><td><font size="2">Tom Briggs</font></td><td><font size="2">Connector Kit</font></td><td><font size="2">1</font></td><td><font size="2">$129.00</font></td><td><font size="2" color="blue"><b>Shipping</b></font></td><td><font size="2">2024-01-12</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">#10037</font></td><td><font size="2">Amy Chen</font></td><td><font size="2">Widget Pro</font></td><td><font size="2">3</font></td><td><font size="2">$1,047.00</font></td><td><font size="2" color="green"><b>Completed</b></font></td><td><font size="2">2024-01-11</font></td><td><font size="2"><a href="#">View</a> | <a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Del</a></font></td></tr>
+    </table>
+
+    <br>
+    <font size="2" color="#666666">Showing 6 of 10,042 orders.</font>
+
+  </td>
+</tr>
+</table>
+
+<table width="100%" bgcolor="#cccccc" cellpadding="5" cellspacing="0" border="0" style="margin-top:20px;">
+  <tr><td align="center"><font size="1" color="#555555">AdminPanel v1.2 &copy; 2009 Acme Corp. All rights reserved.</font></td></tr>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>

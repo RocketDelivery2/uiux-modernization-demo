@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminPanel v1.2 - Customers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<table width="100%" bgcolor="#003366" cellpadding="8" cellspacing="0" border="0">
+  <tr>
+    <td><font color="white" size="4"><b>AdminPanel v1.2</b></font></td>
+    <td align="right">
+      <font color="#cccccc" size="2">
+        <a href="index.html" style="color:#cccccc; text-decoration:none;">Dashboard</a> &nbsp;|&nbsp;
+        <a href="customers.html" style="color:#ffcc00; text-decoration:none;">Customers</a> &nbsp;|&nbsp;
+        <a href="orders.html" style="color:#cccccc; text-decoration:none;">Orders</a> &nbsp;|&nbsp;
+        <a href="reports.html" style="color:#cccccc; text-decoration:none;">Reports</a> &nbsp;|&nbsp;
+        <a href="settings.html" style="color:#cccccc; text-decoration:none;">Settings</a> &nbsp;|&nbsp;
+        <a href="#" style="color:#ff6666; text-decoration:none;" onclick="alert('Logged out')">Logout</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<!-- PAGE TITLE -->
+<table width="100%" bgcolor="#eeeeee" cellpadding="6" cellspacing="0" border="0">
+  <tr>
+    <td><font size="3"><b>Customer Management</b></font></td>
+  </tr>
+</table>
+
+<!-- MAIN LAYOUT -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+  <!-- SIDEBAR -->
+  <td width="180" valign="top" bgcolor="#f4f4f4" style="border-right:1px solid #cccccc; padding:10px;">
+    <font size="2"><b>Quick Links</b></font><br><br>
+    <a href="index.html" class="sidebar-link">&#9658; Dashboard</a><br>
+    <a href="customers.html" class="sidebar-link">&#9658; Customers</a><br>
+    <a href="orders.html" class="sidebar-link">&#9658; Orders</a><br>
+    <a href="reports.html" class="sidebar-link">&#9658; Reports</a><br>
+    <a href="settings.html" class="sidebar-link">&#9658; Settings</a><br>
+  </td>
+
+  <!-- CONTENT -->
+  <td valign="top" style="padding:10px;">
+
+    <!-- SEARCH -->
+    <form action="#" method="get" style="margin-bottom:10px;">
+      <font size="2">Search: </font>
+      <input type="text" name="q" size="20" style="border:1px solid #999999;">
+      <input type="submit" value="Search" class="btn-submit">
+      &nbsp;&nbsp;
+      <input type="button" value="+ New Customer" class="btn-submit" onclick="document.getElementById('addForm').style.display='block'">
+    </form>
+
+    <!-- ADD CUSTOMER FORM (hidden by default) -->
+    <div id="addForm" style="display:none; background:#fffbcc; border:1px solid #cccc00; padding:10px; margin-bottom:10px;">
+      <font size="2"><b>Add New Customer</b></font><br><br>
+      <form action="#" method="post" onsubmit="addCustomer(); return false;">
+        <table cellpadding="3" border="0">
+          <tr>
+            <td><font size="2">First Name:</font></td>
+            <td><input type="text" id="fname" size="18" style="border:1px solid #999;"></td>
+            <td><font size="2">Last Name:</font></td>
+            <td><input type="text" id="lname" size="18" style="border:1px solid #999;"></td>
+          </tr>
+          <tr>
+            <td><font size="2">Email:</font></td>
+            <td><input type="text" id="email" size="18" style="border:1px solid #999;"></td>
+            <td><font size="2">Phone:</font></td>
+            <td><input type="text" id="phone" size="18" style="border:1px solid #999;"></td>
+          </tr>
+          <tr>
+            <td><font size="2">Company:</font></td>
+            <td><input type="text" id="company" size="18" style="border:1px solid #999;"></td>
+            <td><font size="2">Status:</font></td>
+            <td>
+              <select id="status" style="border:1px solid #999;">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="3">
+              <input type="submit" value="Save Customer" class="btn-submit">
+              <input type="button" value="Cancel" class="btn-reset" onclick="document.getElementById('addForm').style.display='none'">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <!-- CUSTOMER TABLE -->
+    <table class="data-table" width="720" cellpadding="4" cellspacing="0" border="1" bordercolor="#cccccc">
+      <tr bgcolor="#336699">
+        <th><font color="white" size="2">ID</font></th>
+        <th><font color="white" size="2">Name</font></th>
+        <th><font color="white" size="2">Email</font></th>
+        <th><font color="white" size="2">Phone</font></th>
+        <th><font color="white" size="2">Company</font></th>
+        <th><font color="white" size="2">Orders</font></th>
+        <th><font color="white" size="2">Status</font></th>
+        <th><font color="white" size="2">Action</font></th>
+      </tr>
+      <tr bgcolor="#ffffff"><td><font size="2">C-001</font></td><td><font size="2">James Harlow</font></td><td><font size="2">j.harlow@email.com</font></td><td><font size="2">555-1201</font></td><td><font size="2">Harlow LLC</font></td><td><font size="2">8</font></td><td><font size="2" color="green">Active</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">C-002</font></td><td><font size="2">Sandra Ohm</font></td><td><font size="2">s.ohm@corp.net</font></td><td><font size="2">555-3344</font></td><td><font size="2">Ohm Industries</font></td><td><font size="2">3</font></td><td><font size="2" color="green">Active</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">C-003</font></td><td><font size="2">Mike Torres</font></td><td><font size="2">mtorres@webmail.com</font></td><td><font size="2">555-8876</font></td><td><font size="2">Torres &amp; Co</font></td><td><font size="2">12</font></td><td><font size="2" color="green">Active</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">C-004</font></td><td><font size="2">Lisa Fontaine</font></td><td><font size="2">lisa.f@oldmail.net</font></td><td><font size="2">555-6612</font></td><td><font size="2">Fontaine Group</font></td><td><font size="2">1</font></td><td><font size="2" color="gray">Inactive</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">C-005</font></td><td><font size="2">Tom Briggs</font></td><td><font size="2">t.briggs@briggs.biz</font></td><td><font size="2">555-2090</font></td><td><font size="2">Briggs Solutions</font></td><td><font size="2">5</font></td><td><font size="2" color="green">Active</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">C-006</font></td><td><font size="2">Amy Chen</font></td><td><font size="2">achen@techco.com</font></td><td><font size="2">555-4400</font></td><td><font size="2">TechCo</font></td><td><font size="2">9</font></td><td><font size="2" color="green">Active</font></td><td><font size="2"><a href="#">Edit</a> | <a href="#" onclick="return confirm('Delete?')">Delete</a></font></td></tr>
+    </table>
+
+    <br>
+    <font size="2" color="#666666">Showing 6 of 284 customers. &nbsp;
+      <a href="#">Previous</a> | <a href="#">Next</a>
+    </font>
+
+  </td>
+</tr>
+</table>
+
+<!-- FOOTER -->
+<table width="100%" bgcolor="#cccccc" cellpadding="5" cellspacing="0" border="0" style="margin-top:20px;">
+  <tr>
+    <td align="center">
+      <font size="1" color="#555555">AdminPanel v1.2 &copy; 2009 Acme Corp. All rights reserved.</font>
+    </td>
+  </tr>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>

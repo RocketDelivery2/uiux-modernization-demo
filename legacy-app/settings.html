@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminPanel v1.2 - Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<table width="100%" bgcolor="#003366" cellpadding="8" cellspacing="0" border="0">
+  <tr>
+    <td><font color="white" size="4"><b>AdminPanel v1.2</b></font></td>
+    <td align="right">
+      <font color="#cccccc" size="2">
+        <a href="index.html" style="color:#cccccc; text-decoration:none;">Dashboard</a> &nbsp;|&nbsp;
+        <a href="customers.html" style="color:#cccccc; text-decoration:none;">Customers</a> &nbsp;|&nbsp;
+        <a href="orders.html" style="color:#cccccc; text-decoration:none;">Orders</a> &nbsp;|&nbsp;
+        <a href="reports.html" style="color:#cccccc; text-decoration:none;">Reports</a> &nbsp;|&nbsp;
+        <a href="settings.html" style="color:#ffcc00; text-decoration:none;">Settings</a> &nbsp;|&nbsp;
+        <a href="#" style="color:#ff6666; text-decoration:none;" onclick="alert('Logged out')">Logout</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<table width="100%" bgcolor="#eeeeee" cellpadding="6" cellspacing="0" border="0">
+  <tr><td><font size="3"><b>Settings</b></font></td></tr>
+</table>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+  <td width="180" valign="top" bgcolor="#f4f4f4" style="border-right:1px solid #cccccc; padding:10px;">
+    <font size="2"><b>Quick Links</b></font><br><br>
+    <a href="index.html" class="sidebar-link">&#9658; Dashboard</a><br>
+    <a href="customers.html" class="sidebar-link">&#9658; Customers</a><br>
+    <a href="orders.html" class="sidebar-link">&#9658; Orders</a><br>
+    <a href="reports.html" class="sidebar-link">&#9658; Reports</a><br>
+    <a href="settings.html" class="sidebar-link">&#9658; Settings</a><br>
+  </td>
+
+  <td valign="top" style="padding:10px;">
+    <font size="2"><b>Company Settings</b></font><br><br>
+
+    <form action="#" method="post" onsubmit="alert('Settings saved!'); return false;">
+      <table cellpadding="4" cellspacing="0" border="0">
+        <tr>
+          <td><font size="2">Company Name:</font></td>
+          <td><input type="text" name="company" value="Acme Corp" size="30" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">Admin Email:</font></td>
+          <td><input type="text" name="email" value="admin@acmecorp.com" size="30" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">Phone:</font></td>
+          <td><input type="text" name="phone" value="555-0100" size="30" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">Address:</font></td>
+          <td><textarea name="address" rows="3" cols="30" style="border:1px solid #999;">123 Business St, Suite 400
+New York, NY 10001</textarea></td>
+        </tr>
+        <tr>
+          <td><font size="2">Timezone:</font></td>
+          <td>
+            <select name="tz" style="border:1px solid #999;">
+              <option>UTC-5 (Eastern)</option>
+              <option>UTC-6 (Central)</option>
+              <option>UTC-7 (Mountain)</option>
+              <option>UTC-8 (Pacific)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><font size="2">Currency:</font></td>
+          <td>
+            <select name="currency" style="border:1px solid #999;">
+              <option>USD ($)</option>
+              <option>EUR (&euro;)</option>
+              <option>GBP (&pound;)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><font size="2">Email Notifications:</font></td>
+          <td>
+            <input type="checkbox" name="notif_orders" checked> <font size="2">New Orders</font><br>
+            <input type="checkbox" name="notif_customers" checked> <font size="2">New Customers</font><br>
+            <input type="checkbox" name="notif_reports"> <font size="2">Weekly Reports</font>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="padding-top:10px;">
+            <input type="submit" value="Save Settings" class="btn-submit">
+            &nbsp;
+            <input type="reset" value="Reset" class="btn-reset">
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <br>
+    <hr color="#cccccc">
+    <br>
+    <font size="2"><b>Change Password</b></font><br><br>
+    <form action="#" method="post" onsubmit="alert('Password updated!'); return false;">
+      <table cellpadding="4" border="0">
+        <tr>
+          <td><font size="2">Current Password:</font></td>
+          <td><input type="password" size="20" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">New Password:</font></td>
+          <td><input type="password" size="20" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">Confirm Password:</font></td>
+          <td><input type="password" size="20" style="border:1px solid #999;"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Update Password" class="btn-submit"></td>
+        </tr>
+      </table>
+    </form>
+  </td>
+</tr>
+</table>
+
+<table width="100%" bgcolor="#cccccc" cellpadding="5" cellspacing="0" border="0" style="margin-top:20px;">
+  <tr><td align="center"><font size="1" color="#555555">AdminPanel v1.2 &copy; 2009 Acme Corp. All rights reserved.</font></td></tr>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>

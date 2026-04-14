@@ -1,0 +1,7 @@
+{
+    "github.copilot.chat.agent.autoFix": true,
+    "github.copilot.chat.claudeAgent.allowDangerouslySkipPermissions": true,
+    "github.copilot.chat.copilotMemory.enabled": true,
+    "chat.growthNotification.enabled": true,
+    "github.copilot.chat.switchAgent.enabled": true
+}

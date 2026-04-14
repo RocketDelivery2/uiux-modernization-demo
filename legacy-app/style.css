@@ -1,0 +1,90 @@
+/* AdminPanel v1.2 - Legacy Stylesheet */
+/* Written 2009 - Do not modify without approval from IT */
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+a {
+    color: #003366;
+}
+
+a:visited {
+    color: #660066;
+}
+
+.sidebar-link {
+    display: block;
+    color: #003366;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.sidebar-link:hover {
+    color: #cc6600;
+    text-decoration: underline;
+}
+
+.stat-box {
+    width: 130px;
+    padding: 10px;
+    border: 2px solid #000000;
+    margin: 2px;
+    text-align: center;
+}
+
+.data-table {
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 4px 6px;
+    font-size: 12px;
+}
+
+.data-table td {
+    padding: 3px 6px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.btn-submit {
+    background-color: #336699;
+    color: white;
+    border: 1px solid #003366;
+    padding: 3px 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #003366;
+}
+
+.btn-reset {
+    background-color: #999999;
+    color: white;
+    border: 1px solid #666666;
+    padding: 3px 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* TODO: fix this later - spacing is off */
+form table td {
+    vertical-align: top;
+}
+
+/* HACK: force table width on IE6 */
+table { table-layout: auto; }
+
+/* Print styles - kinda works */
+@media print {
+    body { font-size: 10pt; }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminPanel v1.2 - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<table width="100%" bgcolor="#003366" cellpadding="8" cellspacing="0" border="0">
+  <tr>
+    <td><font color="white" size="4"><b>AdminPanel v1.2</b></font></td>
+    <td align="right">
+      <font color="#cccccc" size="2">
+        <a href="index.html" style="color:#ffcc00; text-decoration:none;">Dashboard</a> &nbsp;|&nbsp;
+        <a href="customers.html" style="color:#cccccc; text-decoration:none;">Customers</a> &nbsp;|&nbsp;
+        <a href="orders.html" style="color:#cccccc; text-decoration:none;">Orders</a> &nbsp;|&nbsp;
+        <a href="reports.html" style="color:#cccccc; text-decoration:none;">Reports</a> &nbsp;|&nbsp;
+        <a href="settings.html" style="color:#cccccc; text-decoration:none;">Settings</a> &nbsp;|&nbsp;
+        <a href="#" style="color:#ff6666; text-decoration:none;" onclick="alert('Logged out')">Logout</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<!-- PAGE TITLE -->
+<table width="100%" bgcolor="#eeeeee" cellpadding="6" cellspacing="0" border="0">
+  <tr>
+    <td><font size="3"><b>Dashboard Overview</b></font> &nbsp;&nbsp;
+      <font size="2" color="#666666">Last updated: <span id="lastUpdated"></span></font>
+    </td>
+  </tr>
+</table>
+
+<!-- MAIN LAYOUT -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+
+  <!-- SIDEBAR -->
+  <td width="180" valign="top" bgcolor="#f4f4f4" style="border-right:1px solid #cccccc; padding:10px;">
+    <font size="2"><b>Quick Links</b></font><br><br>
+    <a href="index.html" class="sidebar-link">&#9658; Dashboard</a><br>
+    <a href="customers.html" class="sidebar-link">&#9658; Customers</a><br>
+    <a href="orders.html" class="sidebar-link">&#9658; Orders</a><br>
+    <a href="reports.html" class="sidebar-link">&#9658; Reports</a><br>
+    <a href="settings.html" class="sidebar-link">&#9658; Settings</a><br>
+    <br>
+    <font size="2"><b>Tools</b></font><br><br>
+    <a href="#" class="sidebar-link">&#9658; Export CSV</a><br>
+    <a href="#" class="sidebar-link">&#9658; Print Report</a><br>
+    <a href="#" class="sidebar-link">&#9658; Backup Data</a><br>
+  </td>
+
+  <!-- CONTENT -->
+  <td valign="top" style="padding:10px;">
+
+    <!-- STAT BOXES -->
+    <table cellpadding="0" cellspacing="5" border="0">
+      <tr>
+        <td>
+          <div class="stat-box" style="background:#336699;">
+            <div style="color:white; font-size:11px;">TOTAL USERS</div>
+            <div style="color:white; font-size:28px; font-weight:bold;">1,284</div>
+            <div style="color:#aaccff; font-size:10px;">+12% this month</div>
+          </div>
+        </td>
+        <td>
+          <div class="stat-box" style="background:#cc6600;">
+            <div style="color:white; font-size:11px;">ORDERS TODAY</div>
+            <div style="color:white; font-size:28px; font-weight:bold;">47</div>
+            <div style="color:#ffddaa; font-size:10px;">-3% vs yesterday</div>
+          </div>
+        </td>
+        <td>
+          <div class="stat-box" style="background:#336633;">
+            <div style="color:white; font-size:11px;">REVENUE (MTD)</div>
+            <div style="color:white; font-size:28px; font-weight:bold;">$18,420</div>
+            <div style="color:#aaffaa; font-size:10px;">On track</div>
+          </div>
+        </td>
+        <td>
+          <div class="stat-box" style="background:#993333;">
+            <div style="color:white; font-size:11px;">OPEN TICKETS</div>
+            <div style="color:white; font-size:28px; font-weight:bold;">23</div>
+            <div style="color:#ffaaaa; font-size:10px;">5 urgent</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <!-- RECENT ORDERS TABLE -->
+    <font size="2"><b>Recent Orders</b></font>
+    <table class="data-table" width="700" cellpadding="4" cellspacing="0" border="1" bordercolor="#cccccc">
+      <tr bgcolor="#336699">
+        <th><font color="white" size="2">Order ID</font></th>
+        <th><font color="white" size="2">Customer</font></th>
+        <th><font color="white" size="2">Product</font></th>
+        <th><font color="white" size="2">Amount</font></th>
+        <th><font color="white" size="2">Status</font></th>
+        <th><font color="white" size="2">Date</font></th>
+        <th><font color="white" size="2">Action</font></th>
+      </tr>
+      <tr bgcolor="#ffffff">
+        <td><font size="2">#10042</font></td>
+        <td><font size="2">James Harlow</font></td>
+        <td><font size="2">Widget Pro</font></td>
+        <td><font size="2">$349.00</font></td>
+        <td><font size="2" color="green"><b>Completed</b></font></td>
+        <td><font size="2">2024-01-14</font></td>
+        <td><font size="2"><a href="#">View</a> | <a href="#">Edit</a></font></td>
+      </tr>
+      <tr bgcolor="#f9f9f9">
+        <td><font size="2">#10041</font></td>
+        <td><font size="2">Sandra Ohm</font></td>
+        <td><font size="2">Connector Kit</font></td>
+        <td><font size="2">$129.00</font></td>
+        <td><font size="2" color="orange"><b>Pending</b></font></td>
+        <td><font size="2">2024-01-14</font></td>
+        <td><font size="2"><a href="#">View</a> | <a href="#">Edit</a></font></td>
+      </tr>
+      <tr bgcolor="#ffffff">
+        <td><font size="2">#10040</font></td>
+        <td><font size="2">Mike Torres</font></td>
+        <td><font size="2">Premium Support</font></td>
+        <td><font size="2">$599.00</font></td>
+        <td><font size="2" color="green"><b>Completed</b></font></td>
+        <td><font size="2">2024-01-13</font></td>
+        <td><font size="2"><a href="#">View</a> | <a href="#">Edit</a></font></td>
+      </tr>
+      <tr bgcolor="#f9f9f9">
+        <td><font size="2">#10039</font></td>
+        <td><font size="2">Lisa Fontaine</font></td>
+        <td><font size="2">Widget Basic</font></td>
+        <td><font size="2">$89.00</font></td>
+        <td><font size="2" color="red"><b>Cancelled</b></font></td>
+        <td><font size="2">2024-01-13</font></td>
+        <td><font size="2"><a href="#">View</a> | <a href="#">Edit</a></font></td>
+      </tr>
+      <tr bgcolor="#ffffff">
+        <td><font size="2">#10038</font></td>
+        <td><font size="2">Tom Briggs</font></td>
+        <td><font size="2">Connector Kit</font></td>
+        <td><font size="2">$129.00</font></td>
+        <td><font size="2" color="blue"><b>Shipping</b></font></td>
+        <td><font size="2">2024-01-12</font></td>
+        <td><font size="2"><a href="#">View</a> | <a href="#">Edit</a></font></td>
+      </tr>
+    </table>
+
+    <br>
+
+    <!-- QUICK ADD FORM -->
+    <font size="2"><b>Quick Add Order</b></font><br><br>
+    <form action="#" method="post" onsubmit="submitForm(); return false;">
+      <table cellpadding="3" cellspacing="0" border="0">
+        <tr>
+          <td><font size="2">Customer Name:</font></td>
+          <td><input type="text" name="customer" size="25" style="border:1px solid #999999;"></td>
+        </tr>
+        <tr>
+          <td><font size="2">Product:</font></td>
+          <td>
+            <select name="product" style="border:1px solid #999999;">
+              <option value="">-- Select Product --</option>
+              <option value="widget-pro">Widget Pro ($349)</option>
+              <option value="widget-basic">Widget Basic ($89)</option>
+              <option value="connector-kit">Connector Kit ($129)</option>
+              <option value="premium-support">Premium Support ($599)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><font size="2">Notes:</font></td>
+          <td><textarea name="notes" rows="3" cols="25" style="border:1px solid #999999;"></textarea></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="Add Order" class="btn-submit">
+            &nbsp;
+            <input type="reset" value="Clear" class="btn-reset">
+          </td>
+        </tr>
+      </table>
+    </form>
+
+  </td>
+</tr>
+</table>
+
+<!-- FOOTER -->
+<table width="100%" bgcolor="#cccccc" cellpadding="5" cellspacing="0" border="0" style="margin-top:20px;">
+  <tr>
+    <td align="center">
+      <font size="1" color="#555555">AdminPanel v1.2 &copy; 2009 Acme Corp. All rights reserved. | 
+        <a href="#" style="color:#555555;">Support</a> | 
+        <a href="#" style="color:#555555;">Privacy Policy</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<div id="toast" style="display:none; position:fixed; bottom:20px; right:20px; background:#336699; color:white; padding:10px 20px; border:2px solid #003366;">
+  <font size="2" id="toastMsg"></font>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

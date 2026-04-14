@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminPanel v1.2 - Reports</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<table width="100%" bgcolor="#003366" cellpadding="8" cellspacing="0" border="0">
+  <tr>
+    <td><font color="white" size="4"><b>AdminPanel v1.2</b></font></td>
+    <td align="right">
+      <font color="#cccccc" size="2">
+        <a href="index.html" style="color:#cccccc; text-decoration:none;">Dashboard</a> &nbsp;|&nbsp;
+        <a href="customers.html" style="color:#cccccc; text-decoration:none;">Customers</a> &nbsp;|&nbsp;
+        <a href="orders.html" style="color:#cccccc; text-decoration:none;">Orders</a> &nbsp;|&nbsp;
+        <a href="reports.html" style="color:#ffcc00; text-decoration:none;">Reports</a> &nbsp;|&nbsp;
+        <a href="settings.html" style="color:#cccccc; text-decoration:none;">Settings</a> &nbsp;|&nbsp;
+        <a href="#" style="color:#ff6666; text-decoration:none;" onclick="alert('Logged out')">Logout</a>
+      </font>
+    </td>
+  </tr>
+</table>
+
+<table width="100%" bgcolor="#eeeeee" cellpadding="6" cellspacing="0" border="0">
+  <tr><td><font size="3"><b>Reports</b></font></td></tr>
+</table>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+  <td width="180" valign="top" bgcolor="#f4f4f4" style="border-right:1px solid #cccccc; padding:10px;">
+    <font size="2"><b>Quick Links</b></font><br><br>
+    <a href="index.html" class="sidebar-link">&#9658; Dashboard</a><br>
+    <a href="customers.html" class="sidebar-link">&#9658; Customers</a><br>
+    <a href="orders.html" class="sidebar-link">&#9658; Orders</a><br>
+    <a href="reports.html" class="sidebar-link">&#9658; Reports</a><br>
+    <a href="settings.html" class="sidebar-link">&#9658; Settings</a><br>
+  </td>
+
+  <td valign="top" style="padding:10px;">
+    <font size="2"><b>Monthly Revenue Summary</b></font><br><br>
+
+    <table class="data-table" width="500" cellpadding="4" cellspacing="0" border="1" bordercolor="#cccccc">
+      <tr bgcolor="#336699">
+        <th><font color="white" size="2">Month</font></th>
+        <th><font color="white" size="2">Orders</font></th>
+        <th><font color="white" size="2">Revenue</font></th>
+        <th><font color="white" size="2">Avg Order</font></th>
+        <th><font color="white" size="2">Growth</font></th>
+      </tr>
+      <tr bgcolor="#ffffff"><td><font size="2">Jan 2024</font></td><td><font size="2">412</font></td><td><font size="2">$98,440</font></td><td><font size="2">$238.93</font></td><td><font size="2" color="green">+8.2%</font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">Dec 2023</font></td><td><font size="2">381</font></td><td><font size="2">$90,990</font></td><td><font size="2">$238.82</font></td><td><font size="2" color="green">+3.1%</font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">Nov 2023</font></td><td><font size="2">370</font></td><td><font size="2">$88,220</font></td><td><font size="2">$238.43</font></td><td><font size="2" color="red">-1.4%</font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">Oct 2023</font></td><td><font size="2">375</font></td><td><font size="2">$89,470</font></td><td><font size="2">$238.59</font></td><td><font size="2" color="green">+5.7%</font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">Sep 2023</font></td><td><font size="2">355</font></td><td><font size="2">$84,640</font></td><td><font size="2">$238.42</font></td><td><font size="2" color="green">+2.3%</font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">Aug 2023</font></td><td><font size="2">347</font></td><td><font size="2">$82,742</font></td><td><font size="2">$238.45</font></td><td><font size="2" color="green">+1.1%</font></td></tr>
+    </table>
+
+    <br>
+    <font size="2"><b>Top Products</b></font><br><br>
+
+    <table class="data-table" width="400" cellpadding="4" cellspacing="0" border="1" bordercolor="#cccccc">
+      <tr bgcolor="#336699">
+        <th><font color="white" size="2">Product</font></th>
+        <th><font color="white" size="2">Units Sold</font></th>
+        <th><font color="white" size="2">Revenue</font></th>
+      </tr>
+      <tr bgcolor="#ffffff"><td><font size="2">Widget Pro</font></td><td><font size="2">823</font></td><td><font size="2">$287,227</font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">Premium Support</font></td><td><font size="2">204</font></td><td><font size="2">$122,196</font></td></tr>
+      <tr bgcolor="#ffffff"><td><font size="2">Connector Kit</font></td><td><font size="2">744</font></td><td><font size="2">$96,096</font></td></tr>
+      <tr bgcolor="#f9f9f9"><td><font size="2">Widget Basic</font></td><td><font size="2">511</font></td><td><font size="2">$45,479</font></td></tr>
+    </table>
+
+    <br>
+    <input type="button" value="Export to CSV" class="btn-submit" onclick="alert('Exporting...')">
+    &nbsp;
+    <input type="button" value="Print Report" class="btn-reset" onclick="window.print()">
+  </td>
+</tr>
+</table>
+
+<table width="100%" bgcolor="#cccccc" cellpadding="5" cellspacing="0" border="0" style="margin-top:20px;">
+  <tr><td align="center"><font size="1" color="#555555">AdminPanel v1.2 &copy; 2009 Acme Corp. All rights reserved.</font></td></tr>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>
