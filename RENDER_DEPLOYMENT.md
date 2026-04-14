@@ -1,118 +1,230 @@
 # Render Deployment Guide
 
-This project deploys as **two separate Render Static Sites** — one for the landing page + legacy app, and one for the modern React app.
+This project deploys as **two separate Render Static Sites**.
+
+A `render.yaml` file at the repo root defines both services. Render can auto-detect it when you connect the repository, or you can create the services manually using the exact settings below.
+
+---
+
+## Deployment Order
+
+Deploy in this order to ensure the landing page CTA links are live and correct from the first publish:
+
+1. **Deploy Service 2 — Modern App** → copy the live URL (e.g. `https://uiux-modern-app.onrender.com`)
+2. **Update `index.html`** → replace every `YOUR_MODERN_APP_URL` placeholder with the real subdomain
+3. **Commit and push** the change to `main`
+4. **Create/deploy Service 1 — Root + Legacy** → auto-deploy triggers on push, or create manually
 
 ---
 
 ## Service 1 — Landing Page & Legacy App
 
+> **Deploy second** (after updating `index.html` with the modern-app URL).
+
 | Setting | Value |
 |---|---|
 | **Service Type** | Static Site |
+| **Service Name** | `uiux-modernization-demo` |
 | **Repository** | `RocketDelivery2/uiux-modernization-demo` |
 | **Branch** | `main` |
 | **Root Directory** | _(leave blank — use repo root)_ |
 | **Build Command** | _(leave blank — no build needed)_ |
 | **Publish Directory** | `.` |
 | **Auto-Deploy** | Yes |
+| **Environment Variables** | None |
+| **Redirect/Rewrite Rules** | None |
 
 ### How it works
 
-The root `index.html` (case study landing page) and `legacy-app/` are plain static files with no build step. Render serves the root directory directly.
+Render serves the repo root as plain static files — no build step needed.
 
-### URLs produced
+The landing page (`index.html`) and the legacy app (`legacy-app/`) share the same service, so relative links between them work natively:
 
-- `https://<your-service>.onrender.com/` → Landing page
-- `https://<your-service>.onrender.com/legacy-app/index.html` → Legacy dashboard
-- `https://<your-service>.onrender.com/legacy-app/customers.html` → Legacy customers
-- etc.
+| Live URL path | File served |
+|---|---|
+| `/` | `index.html` (case study landing page) |
+| `/landing.css` | `landing.css` |
+| `/legacy-app/` | `legacy-app/index.html` (legacy dashboard) |
+| `/legacy-app/customers.html` | `legacy-app/customers.html` |
+| `/legacy-app/orders.html` | `legacy-app/orders.html` |
+| `/legacy-app/reports.html` | `legacy-app/reports.html` |
+| `/legacy-app/settings.html` | `legacy-app/settings.html` |
 
-### Recommended service name
+### No SPA rewrite needed
 
-`uiux-modernization-demo` (produces `uiux-modernization-demo.onrender.com`)
+This is a traditional multi-page site. Real files exist at every path — no redirect rules are required.
 
 ---
 
 ## Service 2 — Modern React App
 
+> **Deploy first** so you have the live URL to paste into `index.html`.
+
 | Setting | Value |
 |---|---|
 | **Service Type** | Static Site |
+| **Service Name** | `uiux-modern-app` |
 | **Repository** | `RocketDelivery2/uiux-modernization-demo` |
 | **Branch** | `main` |
 | **Root Directory** | `modern-app` |
 | **Build Command** | `npm install && npm run build` |
 | **Publish Directory** | `dist` |
 | **Auto-Deploy** | Yes |
-| **Node Version** | `20` (set via environment variable) |
+| **Environment Variables** | `NODE_VERSION=20` |
 
-### Environment Variables
+### Environment variable
+
+In the Render dashboard, under **Advanced → Environment Variables**:
 
 | Key | Value |
 |---|---|
 | `NODE_VERSION` | `20` |
 
-### How it works
+### What the build does
 
 Render runs `npm install && npm run build` inside `modern-app/`, which:
-1. Installs all dependencies
-2. Runs TypeScript type checking
-3. Builds via Vite → outputs to `modern-app/dist/`
+1. Installs all dependencies from the lock file
+2. Runs TypeScript type checking via `tsc`
+3. Builds with Vite 8 → outputs to `modern-app/dist/`
 
-Render then serves `dist/` as the static site root.
+Render then serves the `dist/` directory as the site root.
 
-> **Note:** The `Publish Directory` should be `dist` (relative to the Root Directory `modern-app`), not `modern-app/dist`.
+> **Important:** The `Publish Directory` field is `dist` — relative to the Root Directory `modern-app`. Do **not** enter `modern-app/dist`.
 
-### SPA routing
+### SPA routing (required)
 
-Because this is a React SPA using client-side routing, you need Render to redirect all routes to `index.html`. Add a Render redirect rule:
+This is a React single-page application with client-side routing. All paths must rewrite to `/index.html` so React Router can handle navigation.
+
+The `render.yaml` file includes this rule automatically. If configuring manually in the dashboard:
+
+**Settings → Redirects/Rewrites → Add Rule**
 
 | Source | Destination | Action |
 |---|---|---|
 | `/*` | `/index.html` | Rewrite |
 
-In Render's dashboard: **Settings → Redirects/Rewrites → Add Rule**
+---
 
-### Recommended service name
+## Post-Deploy: Update Landing Page Links
 
-`uiux-modern-app` (produces `uiux-modern-app.onrender.com`)
+After Service 2 is live, replace the placeholder URLs in `index.html`.
+
+### What to find
+
+Search `index.html` for:
+```
+YOUR_MODERN_APP_URL
+```
+
+It appears in 3 places (nav CTA, hero button, bottom CTA button).
+
+### PowerShell (Windows)
+
+```powershell
+# Run from repo root — replace uiux-modern-app with your actual Render subdomain if different
+(Get-Content index.html) -replace 'YOUR_MODERN_APP_URL', 'uiux-modern-app' | Set-Content index.html
+```
+
+### bash (Linux/macOS/CI)
+
+```bash
+sed -i 's|YOUR_MODERN_APP_URL|uiux-modern-app|g' index.html
+```
+
+### Then commit and push
+
+```bash
+git add index.html
+git commit -m "Update modern-app URL to live Render deployment"
+git push origin main
+```
+
+Service 1 auto-deploys on push and will immediately serve the updated landing page.
 
 ---
 
-## After Deploying
+## Live URLs (fill in after deploying)
 
-1. Update the links in the root `index.html` landing page (the CTA buttons) with your actual Render URLs
-2. Update the `README.md` badge links with your actual Render URLs
-3. Update `--homepage` in this repo's GitHub settings with the landing page URL
+| Service | URL |
+|---|---|
+| Landing page + Legacy app | `https://uiux-modernization-demo.onrender.com` _(confirm after deploy)_ |
+| Modern app | `https://uiux-modern-app.onrender.com` _(confirm after deploy)_ |
 
-### Update CTA links command
+---
 
-```bash
-# Replace placeholder URLs in index.html with your actual Render domains
-# Find these lines in index.html and update:
-#   href="legacy-app/index.html"  → can stay relative (on same service)
-#   href="modern-app/index.html"  → change to your modern app Render URL
-```
+## Step-by-Step Dashboard Instructions
+
+### Step 1 — Create Service 2 (Modern App)
+
+1. Go to [render.com](https://render.com) → **New → Static Site**
+2. Connect your GitHub account → select `RocketDelivery2/uiux-modernization-demo`
+3. Fill in:
+   - **Name**: `uiux-modern-app`
+   - **Branch**: `main`
+   - **Root Directory**: `modern-app`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+4. Click **Advanced** → **Add Environment Variable**:
+   - `NODE_VERSION` = `20`
+5. Click **Create Static Site** and wait for the build (~60–90 s)
+6. Copy the live URL from the top of the dashboard page
+
+### Step 2 — Add SPA Routing to Service 2
+
+7. In the service dashboard → **Settings → Redirects/Rewrites → Add Rule**
+   - Source: `/*`
+   - Destination: `/index.html`
+   - Action: **Rewrite**
+8. Click **Save**
+
+### Step 3 — Update index.html with the live URL
+
+9. In your local repo (PowerShell):
+   ```powershell
+   (Get-Content index.html) -replace 'YOUR_MODERN_APP_URL', 'uiux-modern-app' | Set-Content index.html
+   ```
+10. Commit and push:
+    ```powershell
+    git add index.html
+    git commit -m "Update modern-app URL to live Render deployment"
+    git push origin main
+    ```
+
+### Step 4 — Create Service 1 (Root + Legacy App)
+
+11. Go to [render.com](https://render.com) → **New → Static Site**
+12. Select the same repo: `RocketDelivery2/uiux-modernization-demo`
+13. Fill in:
+    - **Name**: `uiux-modernization-demo`
+    - **Branch**: `main`
+    - **Root Directory**: _(leave blank)_
+    - **Build Command**: _(leave blank)_
+    - **Publish Directory**: `.`
+14. No environment variables or redirect rules needed
+15. Click **Create Static Site**
+16. Once live, open the URL and verify the landing page loads with working links
 
 ---
 
 ## Render Free Tier Notes
 
-- Static Sites are **always free** on Render (no sleep on free tier for static sites)
-- Build time counts against your free monthly build minutes
-- Builds typically take 30–60 seconds for this project
-- Auto-deploy is triggered whenever `main` branch is pushed to GitHub
+- Static Sites are **always free** on Render (no sleep, no usage caps for static hosting)
+- Build time for the modern app is typically 60–90 seconds on first deploy
+- Subsequent builds are faster due to npm cache
+- Auto-deploy is triggered on every push to `main`
+- Both services share the same repo — pushes to `main` trigger both services to redeploy
 
 ---
 
 ## Validation Checklist
 
-Before considering the deployment complete:
+After deployment, confirm:
 
-- [ ] Landing page loads at root URL
-- [ ] Legacy app loads at `/legacy-app/index.html`
-- [ ] Legacy app navigation works between pages (no broken links)
-- [ ] Modern app loads and shows the dashboard
-- [ ] Modern app navigation (React Router) works — click through all 5 pages
-- [ ] Modern app works on mobile viewport
-- [ ] Landing page "View Legacy App" and "View Modern App" buttons point to correct URLs
+- [ ] `https://uiux-modernization-demo.onrender.com/` → landing page loads correctly
+- [ ] `https://uiux-modernization-demo.onrender.com/legacy-app/` → legacy dashboard loads
+- [ ] Legacy app internal navigation works (Customers, Orders, Reports, Settings)
+- [ ] Landing page "View Modern App" button opens the correct Render URL
+- [ ] `https://uiux-modern-app.onrender.com/` → React app loads and shows the dashboard
+- [ ] Navigating to a deep route (e.g. `/customers`) then hard refreshing the page still works (SPA rewrite rule)
+- [ ] All 5 pages work in the modern app (Dashboard, Customers, Orders, Reports, Settings)
+- [ ] Modern app is responsive on mobile viewport
