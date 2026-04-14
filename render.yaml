@@ -1,0 +1,48 @@
+# render.yaml — Infrastructure as Code for Render deployments
+# https://render.com/docs/yaml-spec
+#
+# This repo deploys as TWO separate Render Static Sites.
+# See RENDER_DEPLOYMENT.md for step-by-step dashboard instructions.
+#
+# HOW TO USE:
+#   Render detects this file automatically when you connect the repo.
+#   You can also copy the values manually into the Render dashboard.
+#
+# DEPLOYMENT ORDER:
+#   1. Deploy Service 2 (uiux-modern-app) first → note the live URL
+#   2. Update index.html placeholder URLs with the live modern-app URL
+#   3. Deploy Service 1 (uiux-modernization-demo) — or let auto-deploy trigger
+
+services:
+
+  # ── Service 1: Landing Page + Legacy App ─────────────────────────────────
+  # Served from the repo root — no build required.
+  # The legacy app at /legacy-app/* works via relative paths on this same service.
+  # After deploying Service 2, update the modern-app placeholder URLs in index.html.
+  - type: web
+    name: uiux-modernization-demo
+    runtime: static
+    branch: main
+    buildCommand: ""
+    staticPublishPath: .
+    # No SPA rewrite — this is a multi-page site; real files exist at each path.
+    pullRequestPreviewsEnabled: false
+
+  # ── Service 2: Modern React App (SPA) ────────────────────────────────────
+  # React + TypeScript + Vite SPA, built from modern-app/ and served from dist/.
+  - type: web
+    name: uiux-modern-app
+    runtime: static
+    branch: main
+    rootDir: modern-app
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+    # SPA routing: rewrite all paths to /index.html so React Router handles routing.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    pullRequestPreviewsEnabled: false

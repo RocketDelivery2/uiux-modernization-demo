@@ -92,14 +92,18 @@ npm run preview    # → http://localhost:4173
 
 ## Deployment on Render
 
-See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for exact deployment settings for all three parts of this project.
+See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for full step-by-step instructions.
+
+A `render.yaml` at the repo root defines both services for Render's infrastructure-as-code support.
+
+**Recommended deployment order:** deploy the Modern App service first, note the live URL, update `index.html`, then deploy the Root + Legacy service.
 
 **Quick summary:**
 
 | Service | Type | Root Dir | Build Command | Publish Dir |
 |---|---|---|---|---|
 | Landing + Legacy | Static Site | `.` | _(none)_ | `.` |
-| Modern App | Static Site | `modern-app` | `npm install && npm run build` | `modern-app/dist` |
+| Modern App | Static Site | `modern-app` | `npm install && npm run build` | `dist` |
 
 ---
 
@@ -108,7 +112,7 @@ See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for exact deployment settings
 ### Modern App
 - [React 18](https://react.dev/) — component model and hooks
 - [TypeScript 5](https://www.typescriptlang.org/) — strict typing
-- [Vite 5](https://vitejs.dev/) — fast builds and HMR
+- [Vite 8](https://vitejs.dev/) — fast builds and HMR
 - [Tailwind CSS 3](https://tailwindcss.com/) — utility-first styling
 - [React Router 6](https://reactrouter.com/) — client-side routing
 
