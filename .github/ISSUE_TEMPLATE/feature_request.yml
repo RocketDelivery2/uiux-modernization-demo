@@ -1,0 +1,58 @@
+name: Feature Request
+description: Suggest an improvement or addition to the demo project
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a portfolio/demo project. Feature requests are welcome but may not always be implemented.
+        Please check existing issues before submitting a duplicate.
+
+  - type: dropdown
+    id: which-app
+    attributes:
+      label: Which part of the project does this relate to?
+      options:
+        - Landing page
+        - Legacy App
+        - Modern App
+        - CI / Automation
+        - Documentation / Deployment
+        - General / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the gap or improvement opportunity.
+      placeholder: The landing page doesn't show a live code comparison, making it harder to convey the technical differences...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: What would you like to see added or changed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Have you considered any alternative approaches?
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      description: Please confirm this request fits the project scope.
+      options:
+        - label: This doesn't require rewriting the legacy app to be "modern"
+          required: true
+        - label: I've searched existing issues and this hasn't been requested before
+          required: true

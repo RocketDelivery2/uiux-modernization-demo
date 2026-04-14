@@ -1,0 +1,5 @@
+node_modules/
+modern-app/node_modules/
+modern-app/dist/
+dist/
+*.log
