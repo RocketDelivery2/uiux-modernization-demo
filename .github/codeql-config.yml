@@ -1,0 +1,9 @@
+name: "CodeQL Config"
+paths:
+  - "legacy-app"
+  - "modern-app/src"
+paths-ignore:
+  - "modern-app/node_modules"
+  - "modern-app/dist"
+  - "**/*.test.ts"
+  - "**/*.spec.ts"

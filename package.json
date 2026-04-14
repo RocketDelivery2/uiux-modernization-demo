@@ -1,0 +1,26 @@
+{
+  "name": "uiux-modernization-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio case study: legacy Vanilla HTML/CSS/JS → React + TypeScript + Tailwind modernization",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build": "cd modern-app && npm run build"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  },
+  "keywords": [
+    "ui-ux",
+    "frontend",
+    "modernization",
+    "legacy-modernization",
+    "vanilla-js",
+    "react",
+    "typescript",
+    "tailwind",
+    "portfolio"
+  ],
+  "license": "MIT"
+}

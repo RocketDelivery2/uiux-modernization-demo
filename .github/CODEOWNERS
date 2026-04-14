@@ -1,0 +1,4 @@
+# CODEOWNERS
+# Default owner for all files in the repo.
+# For a solo portfolio project, this routes all review requests to the maintainer.
+* @codin

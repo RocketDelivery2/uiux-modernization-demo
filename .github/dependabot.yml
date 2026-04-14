@@ -1,0 +1,58 @@
+version: 2
+
+updates:
+  # GitHub Actions — keep workflow dependencies current
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # npm — modern-app dependencies
+  - package-ecosystem: npm
+    directory: /modern-app
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:30"
+      timezone: "UTC"
+    commit-message:
+      prefix: "deps"
+    labels:
+      - "dependencies"
+      - "npm"
+    # Group all minor/patch updates into one PR to reduce noise
+    groups:
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    # Open no more than 3 PRs at once (solo repo — keep it manageable)
+    open-pull-requests-limit: 3
+    # Ignore major version bumps for stable ecosystem packages
+    ignore:
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-router-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
