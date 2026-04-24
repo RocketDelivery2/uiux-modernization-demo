@@ -2,7 +2,9 @@
 
 A portfolio case study demonstrating a complete modernization of a legacy Vanilla HTML/CSS/JS admin dashboard into a component-driven React application.
 
-**Live demos → [Landing Page](#) · [Legacy App](#) · [Modern App](#)**
+**Live demos → [Landing Page](#) · [Legacy App](#) · [Modern App](#)** (Todo deploy) 
+
+**Style Modernization Prototype (See Video):** https://www.loom.com/share/d6ac73fae37d4976bc9cee5ef1f64f34
 
 > Replace `#` links above with your Render deployment URLs after deploying.
 
