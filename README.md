@@ -1,8 +1,8 @@
-# UI/UX Modernization Demo
+# Enterprise UI/UX Modernization Prototype
 
-A portfolio case study demonstrating a complete modernization of a legacy Vanilla HTML/CSS/JS admin dashboard into a component-driven React application.
+Legacy Component Catalog Modernized from Vanilla HTML/CSS/JS to React + TypeScript + Tailwind CSS
 
-**Live demos → [Landing Page](#) · [Legacy App](#) · [Modern App](#)** (Todo deploy) 
+**Live demos → [Landing Page](#) · [Legacy Reference Implementation](#) · [Modern Component Architecture](#)** (Todo deploy) 
 
 **Style Modernization Prototype (See Video):** https://www.loom.com/share/d6ac73fae37d4976bc9cee5ef1f64f34
 
@@ -12,9 +12,15 @@ A portfolio case study demonstrating a complete modernization of a legacy Vanill
 
 ## What This Is
 
-This project shows a real-world, side-by-side comparison of the same admin dashboard built two ways:
+This project demonstrates a real-world modernization of a legacy enterprise UI system into a scalable, component-driven frontend architecture.
 
-| | Legacy App | Modern App |
+It showcases how outdated HTML/CSS/JavaScript patterns can be transformed into a modern React + TypeScript + Tailwind CSS application using reusable components, accessibility-first design, responsive layouts, and maintainable frontend architecture.
+
+The goal is not visual redesign alone, but engineering modernization: improving scalability, developer velocity, accessibility compliance, and long-term maintainability.
+
+This project provides a side-by-side comparison of the same component catalog built two ways:
+
+| | Legacy Reference Implementation | Modern Component Architecture |
 |---|---|---|
 | **Stack** | Vanilla HTML/CSS/JS | React 18 + TypeScript + Tailwind CSS |
 | **Layout** | Nested `<table>` elements | CSS Grid + Flexbox |
@@ -22,29 +28,53 @@ This project shows a real-world, side-by-side comparison of the same admin dashb
 | **JavaScript** | Global functions, `alert()`, no types | React hooks, typed components |
 | **Routing** | Full page reloads | SPA with React Router |
 | **Responsive** | No | Yes |
-| **Build** | None (plain files) | Vite (1.4s build, 61 kB gzip) |
+| **Build** | None (plain files) | Vite build |
+
+---
+
+## Business Impact
+
+- Reduced frontend development effort through reusable component architecture
+- Standardized design patterns across the platform
+- Improved accessibility compliance with WCAG 2.2 AAA and Section 508 principles
+- Enabled scalable UI modernization without full platform rewrites
+- Reduced long-term maintenance cost and technical debt
+- Improved developer onboarding through shared design system patterns
+
+---
+
+## Accessibility
+
+This prototype was designed with accessibility-first principles aligned to:
+
+- WCAG 2.2 AAA
+- Section 508 compliance
+- Semantic HTML patterns
+- Keyboard accessibility
+- Scalable typography and spacing systems
+- High-contrast design tokens
 
 ---
 
 ## Repository Structure
 
-```
+```text
 uiux-modernization-demo/
-├── index.html              # Landing page (case study overview)
+├── index.html              # Landing page / case study overview
 ├── landing.css             # Landing page styles
-├── legacy-app/             # Vanilla HTML/CSS/JS implementation
-│   ├── index.html          # Dashboard
+├── legacy-app/             # Legacy Reference Implementation
+│   ├── index.html
 │   ├── customers.html
 │   ├── orders.html
 │   ├── reports.html
 │   ├── settings.html
 │   ├── style.css
 │   └── app.js
-└── modern-app/             # React + TypeScript + Tailwind
+└── modern-app/             # Modern Component Architecture
     ├── src/
     │   ├── App.tsx
-    │   ├── components/     # Shell, StatCard, StatusBadge, PageHeader
-    │   └── pages/          # Dashboard, Customers, Orders, Reports, Settings
+    │   ├── components/
+    │   └── pages/
     ├── package.json
     ├── vite.config.ts
     ├── tailwind.config.js
@@ -57,37 +87,49 @@ uiux-modernization-demo/
 
 ### Prerequisites
 
-- [Node.js 18+](https://nodejs.org/) (for modern-app only)
-- Any modern browser (for legacy-app and landing page)
+- Node.js 18+ for the modern app
+- Any modern browser for the legacy app and landing page
 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/uiux-modernization-demo.git
+git clone https://github.com/RocketDelivery2/uiux-modernization-demo.git
 cd uiux-modernization-demo
 ```
 
 ### 2. Run the landing page
 
-Open `index.html` directly in your browser — no server required.
+Open `index.html` directly in your browser.
 
-### 3. Run the legacy app
+### 3. Run the legacy reference implementation
 
-Open `legacy-app/index.html` directly in your browser — no server required.
+Open `legacy-app/index.html` directly in your browser.
 
-### 4. Run the modern app
+### 4. Run the modern component architecture
 
 ```bash
 cd modern-app
 npm install
-npm run dev        # development server → http://localhost:5173
+npm run dev
+```
+
+Development server:
+
+```text
+http://localhost:5173
 ```
 
 To preview the production build:
 
 ```bash
-npm run build      # builds to modern-app/dist/
-npm run preview    # → http://localhost:4173
+npm run build
+npm run preview
+```
+
+Preview server:
+
+```text
+http://localhost:4173
 ```
 
 ---
@@ -118,16 +160,19 @@ A `render.yaml` at the repo root defines both services for Render's infrastructu
 - [Tailwind CSS 3](https://tailwindcss.com/) — utility-first styling
 - [React Router 6](https://reactrouter.com/) — client-side routing
 
-### Legacy App (intentionally outdated)
-- HTML 4-era markup patterns (table layouts, `<font>` tags)
-- Non-responsive CSS with inline `bgcolor` and `style` attributes
-- Unstructured JavaScript with global functions
+### Legacy Reference Implementation
+- Legacy HTML/CSS/JavaScript patterns
+- Table-based layout structures
+- Inline styling and deprecated markup patterns
+- Global JavaScript functions
 
 ---
 
 ## Recommended GitHub Topics
 
-`ui-ux` `frontend` `modernization` `legacy-modernization` `vanilla-js` `react` `typescript` `tailwind` `render` `portfolio` `vite` `admin-dashboard`
+```text
+react typescript frontend tailwind vite design-system component-library ui-modernization accessibility wcag section-508 enterprise-ui frontend-architecture design-tokens legacy-modernization modernization
+```
 
 ---
 
